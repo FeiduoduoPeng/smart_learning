@@ -1,0 +1,4 @@
+/home/cloud/smart-learning/3dws_detectron2/skeleton2angles/build/CMakeFiles/edit_cache.dir
+/home/cloud/smart-learning/3dws_detectron2/skeleton2angles/build/CMakeFiles/main.dir
+/home/cloud/smart-learning/3dws_detectron2/skeleton2angles/build/CMakeFiles/rebuild_cache.dir
+/home/cloud/smart-learning/3dws_detectron2/skeleton2angles/build/CMakeFiles/ske2ang.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -shared -Wl,-soname,libske2ang.so -o libske2ang.so CMakeFiles/ske2ang.dir/ske2ang.cpp.o 

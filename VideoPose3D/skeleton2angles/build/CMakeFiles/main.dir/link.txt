@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/main.dir/main.cpp.o  -o main  -Wl,-rpath,/home/cloud/smart-learning/3dws_detectron2/skeleton2angles/build libske2ang.so 
