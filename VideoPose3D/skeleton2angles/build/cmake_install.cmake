@@ -1,4 +1,4 @@
-# Install script for directory: /home/cloud/smart-learning/3dws_detectron2/skeleton2angles
+# Install script for directory: /home/pf/git/smart_learning/VideoPose3D/skeleton2angles
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/cloud/smart-learning/3dws_detectron2/skeleton2angles/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/pf/git/smart_learning/VideoPose3D/skeleton2angles/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

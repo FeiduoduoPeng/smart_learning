@@ -15,7 +15,6 @@ extern "C" {
 const double PI = 3.1415926536;
 const double deltaAng = 20.0/180.0*PI;
 
-
 bool skeleton2angles(double *skeIn, double *angOut);
 bool calcLeftArm(const Eigen::Vector3d &vec1, const Eigen::Vector3d &vec2, std::vector<double> &angs);
 bool calcRightArm(const Eigen::Vector3d &vec1, const Eigen::Vector3d &vec2, std::vector<double> &angs);

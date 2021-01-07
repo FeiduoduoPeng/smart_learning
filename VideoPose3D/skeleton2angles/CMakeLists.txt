@@ -10,7 +10,8 @@ add_compile_options(-pthread)
 ###########
 include_directories(  "/usr/include/eigen3" )
 
-add_library(ske2ang SHARED ske2ang.cpp)
+# add_library(ske2ang SHARED ske2ang.cpp)
+add_library(ske2ang SHARED s2a.cpp)
 
-add_executable(main main.cpp)
-target_link_libraries(main ske2ang)
+# add_executable(main main.cpp)
+# target_link_libraries(main ske2ang)

@@ -4,14 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/cloud/smart-learning/3dws_detectron2/skeleton2angles/ske2ang.cpp" "/home/cloud/smart-learning/3dws_detectron2/skeleton2angles/build/CMakeFiles/ske2ang.dir/ske2ang.cpp.o"
+  "/home/pf/git/smart_learning/VideoPose3D/skeleton2angles/s2a.cpp" "/home/pf/git/smart_learning/VideoPose3D/skeleton2angles/build/CMakeFiles/ske2ang.dir/s2a.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
-
-# Preprocessor definitions for this target.
-set(CMAKE_TARGET_DEFINITIONS_CXX
-  "ske2ang_EXPORTS"
-  )
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

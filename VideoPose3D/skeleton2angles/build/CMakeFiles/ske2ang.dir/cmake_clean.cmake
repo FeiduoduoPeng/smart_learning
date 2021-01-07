@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ske2ang.dir/ske2ang.cpp.o"
+  "CMakeFiles/ske2ang.dir/s2a.cpp.o"
   "libske2ang.pdb"
   "libske2ang.so"
 )

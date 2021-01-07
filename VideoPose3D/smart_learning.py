@@ -29,6 +29,7 @@ import sys
 import os
 import glob
 import cv2
+import rospy
 
 # support c library
 from ctypes import *
@@ -140,8 +141,8 @@ def preprocess2D(data):
     print('----------')
     
     return {
-        'start_frame': 0, # Inclusive
-        'end_frame': len(kp), # Exclusive
+        'start_frame': 0,    # Inclusive
+        'end_frame': len(kp),    # Exclusive
         'bounding_boxes': bb,
         'keypoints': kp,
     }, metadata
@@ -149,7 +150,7 @@ def preprocess2D(data):
 def renderImg2D(bbox, kps, img):
     if len(bbox)==0 or len(kps)==0:
         return img
-    img = cv2.rectangle(img, (bbox[0][0], bbox[0][1]),  (bbox[0][2], bbox[0][3]), (255,0,0), 4 ) # bouding box
+    img = cv2.rectangle(img, (bbox[0][0], bbox[0][1]),  (bbox[0][2], bbox[0][3]), (0,0,255), 4 ) # bouding box
     kps = kps[0]
     for i in range(17):
         img = cv2.circle(img, (kps[0][i], kps[1][i]), 2, (255,0,0), 2)    #keypoints
@@ -288,6 +289,9 @@ def infer3D(model3d, kp2d, imgSize):
         predicted_3d_pos = model3d(inputs_2d)
         return predicted_3d_pos.squeeze(0).cpu().numpy()
 
+def normalizeSkeleton(data_3d):
+    pass
+
 def plot3D(data_3d):
     fig = plt.figure() 
     ax = fig.add_subplot(111, projection='3d')
@@ -332,10 +336,38 @@ def plot3D(data_3d):
         plt.savefig('tmp/'+str(i)+'.jpg')
         # print('---')
         plt.pause(0.001)
-        # input('press enter to continue')
+        input('press enter to continue')
+
+def ske2angs(data_3d):
+    s2a = cdll.LoadLibrary('./libske2ang.so')
+    dblPtr = POINTER(c_double)
+    
+    text_file = open('data.txt', 'w')
+    for ske in data_3d:
+        ske= [[-item[1], -item[0], -item[2]] for item in ske]    #rotate points
+        flatPts = np.array(ske, dtype=c_double).flatten()
+        skePtr = flatPts.ctypes.data_as(dblPtr)
+
+        angsOut = np.zeros(21, dtype=c_double)
+        angsPtr = angsOut.ctypes.data_as(dblPtr)
+
+        s2a.skeleton2angles(skePtr,angsPtr)
+        res = []
+        for i in range(20):
+            res.append(angsPtr[i])
+            text_file.write('%s,'%angsPtr[i])
+        res.append(angsPtr[20])
+        text_file.write('%s\n'%angsPtr[20])
+        text_file.flush()
+        # print(res)
+        # print('----------')
+
+
+
 
 def main():
     setup_logger()
+    # rospy.init_node('smart_learning')
     args_2d = parse_args_2d()
     data_2d = infer2D(args_2d)
     data, meta= preprocess2D(data_2d)
@@ -344,7 +376,9 @@ def main():
 
     data_3d = infer3D( model_3d, data['keypoints'], (meta['w'], meta['h']) )
 
-    plot3D(data_3d)
+    ske2angs(data_3d)
+    # plot3D(data_3d)
+    # print(data_3d)
 
 
 #########################################################################################

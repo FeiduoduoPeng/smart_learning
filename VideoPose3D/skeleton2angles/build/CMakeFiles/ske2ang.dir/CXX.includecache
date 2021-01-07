@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/cloud/smart-learning/3dws_detectron2/skeleton2angles/ske2ang.cpp
+/home/pf/git/smart_learning/VideoPose3D/skeleton2angles/s2a.cpp
 ske2ang.h
-/home/cloud/smart-learning/3dws_detectron2/skeleton2angles/ske2ang.h
+/home/pf/git/smart_learning/VideoPose3D/skeleton2angles/ske2ang.h
 
-/home/cloud/smart-learning/3dws_detectron2/skeleton2angles/ske2ang.h
+/home/pf/git/smart_learning/VideoPose3D/skeleton2angles/ske2ang.h
 iostream
 -
 string
