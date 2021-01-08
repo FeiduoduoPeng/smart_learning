@@ -110,6 +110,15 @@ bool calcLeftArm(const Eigen::Vector3d &vec1, const Eigen::Vector3d &vec2, std::
     angs[1] = calcAngBetweenVec( v1RotXY, nPos);
     angs[1] = v1RotXY(1) > nPos(1) ? -angs[1] : angs[1];
 
+    Eigen::Matrix3d rZ;
+    rZ << cos(angs[1]), -sin(angs[1]), 0, 
+          sin(angs[1]), cos(angs[1]), 0, 
+          0,0,1;
+    Eigen::Matrix3d R = rY*rZ;
+    if( ( R.inverse()*v1- nPos).norm() > 1e-2 ){
+        std::cout<< "left check failed: \n"<< R.inverse()*v1 - nPos<<std::endl;
+    }
+
     // calculate elbow
     angs[3] = calcAngBetweenVec(v1, v2);
     if (angs[3]<5.0/180.0*PI) {
@@ -117,12 +126,6 @@ bool calcLeftArm(const Eigen::Vector3d &vec1, const Eigen::Vector3d &vec2, std::
         return true;
     }
 
-    Eigen::Matrix3d rZ;
-    rZ << cos(angs[1]), -sin(angs[1]), 0, 
-          sin(angs[1]), cos(angs[1]), 0, 
-          0,0,1;
-    Eigen::Matrix3d R = rZ*rY;
-    // std::cout<< R.inverse()*v1 - nPos<<"\n-----------------"<<std::endl;
     Eigen::Vector3d v2Rot= R.inverse()*v2;
     Eigen::Vector3d v2RotProjYZ(0, v2Rot(1), v2Rot(2));
 
@@ -158,6 +161,14 @@ bool calcRightArm(const Eigen::Vector3d &vec1, const Eigen::Vector3d &vec2, std:
     Eigen::Vector3d v1RotXY = rY.inverse()*v1;
     angs[1] = calcAngBetweenVec( v1RotXY, nPos);
     angs[1] = v1RotXY(1) > nPos(1) ? -angs[1] : angs[1];
+    Eigen::Matrix3d rZ;
+    rZ << cos(angs[1]), -sin(angs[1]), 0, 
+          sin(angs[1]), cos(angs[1]), 0, 
+          0,0,1;
+    Eigen::Matrix3d R = rY*rZ;
+    if( (R.inverse()*v1 - nPos).norm() > 1e-2){
+        std::cout<< "right check failed: \n"<< R.inverse()*v1 - nPos<<std::endl;
+    }
 
     // calculate elbow
     angs[3] = calcAngBetweenVec(v1, v2);
@@ -166,12 +177,7 @@ bool calcRightArm(const Eigen::Vector3d &vec1, const Eigen::Vector3d &vec2, std:
         return true;
     }
 
-    Eigen::Matrix3d rZ;
-    rZ << cos(angs[1]), -sin(angs[1]), 0, 
-          sin(angs[1]), cos(angs[1]), 0, 
-          0,0,1;
-    Eigen::Matrix3d R = rZ*rY;
-    // std::cout<< R.inverse()*v1 - nPos<<"\n-----------------"<<std::endl;
+
     Eigen::Vector3d v2Rot= R.inverse()*v2;
     Eigen::Vector3d v2RotProjYZ(0, v2Rot(1), v2Rot(2));
 

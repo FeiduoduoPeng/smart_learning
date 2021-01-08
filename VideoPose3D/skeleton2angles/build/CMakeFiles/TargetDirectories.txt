@@ -1,3 +1,0 @@
-/home/pf/git/smart_learning/VideoPose3D/skeleton2angles/build/CMakeFiles/rebuild_cache.dir
-/home/pf/git/smart_learning/VideoPose3D/skeleton2angles/build/CMakeFiles/ske2ang.dir
-/home/pf/git/smart_learning/VideoPose3D/skeleton2angles/build/CMakeFiles/edit_cache.dir
