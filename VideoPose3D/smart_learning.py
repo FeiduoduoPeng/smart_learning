@@ -377,7 +377,7 @@ def main():
     data_3d = infer3D( model_3d, data['keypoints'], (meta['w'], meta['h']) )
 
     ske2angs(data_3d)
-    # plot3D(data_3d)
+    plot3D(data_3d)
     # print(data_3d)
 
 
